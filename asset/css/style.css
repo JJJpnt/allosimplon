@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css?family=Archivo|Fredoka+One|Gentium+Basic|Neuton|Permanent+Marker|Viga&display=swap');
+
+/* font-family: 'Fredoka One', cursive; */
+/* font-family: 'Permanent Marker', cursive; */
+/* font-family: 'Viga', sans-serif; */
+/* font-family: 'Archivo', sans-serif; */
+/* font-family: 'Neuton', serif; */
+/* font-family: 'Gentium Basic', serif; */
+
+.font-fantasy {
+    font-family: 'Permanent Marker', cursive;
+}
+
+.font-serif {
+    font-family: 'Gentium Basic', serif;
+}
+
+.font-sans {
+    font-family: 'Fredoka One', cursive;
+}
+
+.bg-color-dark {
+    background-color: #181319;
+}
+
+.bg-color-danger {
+    background-color: #d92e41;
+}
+
+.bg-color-light {
+    color: whitesmoke;
+}
+
+.color-dark {
+    color: #181319;
+}
+
+.color-danger {
+    color: #d92e41;
+}
+
+.color-light {
+    color: whitesmoke;
+}
+
+body {
+    font-size: 1rem;
+    background-color: #181319;
+
+    /* For nav */
+    background-color: #ecf0f1;
+    font-family: helvetica, arial, sans-serif;
+    font-size: 16px;
+    padding-top: 330px;
+    -moz-transition: padding-top 0.5s ease;
+    -o-transition: padding-top 0.5s ease;
+    -webkit-transition: padding-top 0.5s ease;
+    transition: padding-top 0.5s ease;
+}
+header {
+    width: 100%;
+    height: 300px;
+    background-color: #3498db;
+    text-align: center;
+    position: relative;
+    position: fixed;
+    top: 0;
+    overflow: hidden;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+  }
+  header h1 {
+    font-size: 42px;
+    color: #fff;
+    line-height: 230px;
+    text-transform: uppercase;
+    font-weight: 100;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+  }
+  header nav {
+    position: absolute;
+    bottom: 0;
+    height: 60px;
+    line-height: 60px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  header nav a {
+    color: #fff;
+    display: inline-block;
+    padding: 10px 15px;
+    line-height: 1;
+    text-decoration: none;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+  }
+  header nav a:hover {
+    -moz-box-shadow: 0 0 0 1px #fff;
+    -webkit-box-shadow: 0 0 0 1px #fff;
+    box-shadow: 0 0 0 1px #fff;
+  }
+
+/* Sticky Header Style */
+/* ---------------------------------------- */
+body.sticky-header {
+    padding-top: 100px;
+  }
+  body.sticky-header header {
+    height: 60px;
+    background-color: rgba(52, 152, 219, 0.9);
+  }
+  body.sticky-header header h1 {
+    -moz-transform: scale(0, 0);
+    -ms-transform: scale(0, 0);
+    -webkit-transform: scale(0, 0);
+    transform: scale(0, 0);
+  }
+    
+
+
+.placeholder {
+    height: 300vh;
+    background-color: yellow;
+}
