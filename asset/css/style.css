@@ -7,6 +7,15 @@
 /* font-family: 'Neuton', serif; */
 /* font-family: 'Gentium Basic', serif; */
 
+:root {
+    --color-dark: #181329; 	/* hsl(254, 37%, 12%) */
+    --color-dark-hsl: 254, 37%, 12%;
+    --color-mid: hsl(254, 10%, 55%);
+    --color-mid-hsl: 254, 10%, 55%;
+    --color-danger: hsl(353, 90%, 65%);
+    --color-light: whitesmoke;
+}
+
 .font-fantasy {
     font-family: 'Permanent Marker', cursive;
 }
@@ -20,68 +29,73 @@
 }
 
 .bg-color-dark {
-    background-color: #181319;
+    background-color: var(--color-dark);
 }
 
 .bg-color-danger {
-    background-color: #d92e41;
+    background-color: var(--color-danger);
 }
 
 .bg-color-light {
-    color: whitesmoke;
+    color: var(--color-light);
 }
 
 .color-dark {
-    color: #181319;
+    color: var(--color-dark);
 }
 
 .color-danger {
-    color: #d92e41;
+    color: var(--color-danger);
 }
 
 .color-light {
-    color: whitesmoke;
+    color: var(--color-light);
+}
+
+.bg-mid-trans {
+    background-color: hsla(var(--color-mid-hsl),0.7);
+    backdrop-filter: blur(8px);
+}
+.bg-dark-trans {
+    background-color: hsla(var(--color-dark-hsl),0.5);
+    backdrop-filter: blur(4px);
 }
 
 body {
     font-size: 1rem;
-    background-color: #181319;
+    background-color: var(--color-dark);
 
     /* For nav */
-    background-color: #ecf0f1;
+    background-color: var(--color-dark);
+    color: var(--color-light);
     font-family: helvetica, arial, sans-serif;
     font-size: 16px;
-    padding-top: 330px;
-    -moz-transition: padding-top 0.5s ease;
-    -o-transition: padding-top 0.5s ease;
-    -webkit-transition: padding-top 0.5s ease;
-    transition: padding-top 0.5s ease;
+    /* padding-top: 140px; */
+    /* transition: padding-top 0.5s ease; */
 }
 header {
+    margin-top: 0;
     width: 100%;
-    height: 300px;
-    background-color: #3498db;
+    height: 140px;
     text-align: center;
-    position: relative;
     position: fixed;
     top: 0;
     overflow: hidden;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    -webkit-transition: all 0.5s ease;
     transition: all 0.5s ease;
+    background-color: rgba(0, 0, 0, 0.0);
+    z-index: 9999 !important;
+    line-height: 80px;
+
   }
   header h1 {
     font-family: 'Permanent Marker', cursive;
     font-size: 42px;
     color: #fff;
-    line-height: 230px;
+    line-height: 80px;
     text-transform: uppercase;
     font-weight: 100;
-    -moz-transition: all 0.6s ease;
-    -o-transition: all 0.6s ease;
-    -webkit-transition: all 0.6s ease;
-    transition: all 0.6s ease;
+    /* transition: all 2s ease; */
+    filter: drop-shadow(0px 3px 4px rgba(0,0,0,0.75));
   }
   header nav {
     position: absolute;
@@ -89,43 +103,163 @@ header {
     height: 60px;
     line-height: 60px;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.1);
   }
-  header nav a {
-    color: #fff;
+    header div a {
+    /* line-height: 80px; */
+    /* height: 1.5rem; */
+    }
+
+  header a, button, .btn {
+    color: var(--color-light);
     display: inline-block;
-    padding: 10px 15px;
+    font-weight: bold;
+    padding: 7px 10px;
     line-height: 1;
     text-decoration: none;
-    -moz-border-radius: 2px;
-    -webkit-border-radius: 2px;
     border-radius: 2px;
+    /* filter: drop-shadow(0px, 2px, 6px, 5px, black); */
+    filter: drop-shadow(0px 2px 2px rgba(0,0,0,0.75));
   }
-  header nav a:hover {
-    -moz-box-shadow: 0 0 0 1px #fff;
-    -webkit-box-shadow: 0 0 0 1px #fff;
-    box-shadow: 0 0 0 1px #fff;
+  header a:hover, button:hover, .btn:hover {
+    background-color: hsla(var(--color-dark-hsl),0.7);
+    box-shadow: 0 0 0 1px var(--color-danger);
+    text-decoration: none;
+    color: var(--color-danger);
   }
 
 /* Sticky Header Style */
 /* ---------------------------------------- */
 body.sticky-header {
-    padding-top: 100px;
-  }
-  body.sticky-header header {
-    height: 60px;
-    background-color: rgba(52, 152, 219, 0.9);
-  }
-  body.sticky-header header h1 {
-    /* -moz-transform: scale(0, 0); */
-    /* -ms-transform: scale(0, 0); */
-    /* -webkit-transform: scale(0, 0); */
-    /* transform: scale(0, 0); */
-  }
+    /* padding-top: 60px; */
+}
+body.sticky-header header {
+    /* position: fixed; */
+    margin-top: -80px;
+    /* height: 60px; */
+    /* background-color: rgba(52, 152, 219, 0.9); */
+}
+body.sticky-header header h1 {
+/* transform: scale(1, 0); */
+}
     
+.nav-trans {
+    /* background-color: rgba(0, 0, 0, 0.0); */
+}
+
+.nav-opaque {
+    background-color: hsla(var(--color-dark-hsl),0.7);
+    backdrop-filter: blur(8px);
+}
 
 
 .placeholder {
     height: 300vh;
-    background-color: yellow;
+    /* background-color: yellow; */
 }
+
+
+/* Footer */
+footer h3 {
+    font-family: 'Fredoka One', cursive;
+    color: var(--color-danger);
+}
+
+footer div div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 13rem;
+}
+
+footer a {
+    text-decoration: none;
+    color: var(--color-light);
+}
+
+footer a:hover {
+    text-decoration: none;
+    color: var(--color-danger);
+}
+
+
+/* Connexion Modal */
+
+
+.modal {
+    /* height: 370px; */
+    /* margin-top: auto; */
+    /* margin-bottom: auto; */
+    /* width: 400px; */
+    font-size: .75rem;
+    background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.modal-header h3 {
+    color: white;
+}
+
+.input-group-prepend span {
+    width: 50px;
+    background-color: var(--color-danger);
+    color: black;
+    border: 0 !important;
+}
+
+input:focus {
+    outline: 0 0 0 0 !important;
+    box-shadow: 0 0 0 0 !important;
+
+}
+
+.remember {
+    color: white;
+}
+
+.remember input {
+    width: 20px;
+    height: 20px;
+    margin-left: 15px;
+    margin-right: 5px;
+    border-radius: 5px;
+}
+
+.btn-login {
+    /* color: black; */
+    /* background-color: #FFC312; */
+    /* width: 100px; */
+    /* border: 1px solid var(--color-danger); */
+    border: 1px solid hsla(353, 90%, 65%, 0.25);
+}
+
+.login_btn:hover {
+    color: black;
+    background-color: white;
+}
+
+.links {
+    color: white;
+}
+
+.links a {
+    color: var(--color-danger);
+    margin-left: 4px;
+}
+
+.btn-close {
+    color: var(--color-light);
+    -webkit-appearance: none;
+    padding: 0px;
+    border: 0;
+    background-color: transparent;
+    opacity: 1;
+    font-size: 1.5rem;
+    float: right;
+}
+
+.btn-close:hover {
+    color: var(--color-danger);
+    font-size: 1.5rem;
+    border: 0 solid transparent !important;
+}
+
