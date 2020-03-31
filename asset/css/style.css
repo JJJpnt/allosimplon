@@ -72,15 +72,16 @@ header {
     transition: all 0.5s ease;
   }
   header h1 {
+    font-family: 'Permanent Marker', cursive;
     font-size: 42px;
     color: #fff;
     line-height: 230px;
     text-transform: uppercase;
     font-weight: 100;
-    -moz-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    -webkit-transition: all 0.3s ease;
-    transition: all 0.3s ease;
+    -moz-transition: all 0.6s ease;
+    -o-transition: all 0.6s ease;
+    -webkit-transition: all 0.6s ease;
+    transition: all 0.6s ease;
   }
   header nav {
     position: absolute;
@@ -116,10 +117,10 @@ body.sticky-header {
     background-color: rgba(52, 152, 219, 0.9);
   }
   body.sticky-header header h1 {
-    -moz-transform: scale(0, 0);
-    -ms-transform: scale(0, 0);
-    -webkit-transform: scale(0, 0);
-    transform: scale(0, 0);
+    /* -moz-transform: scale(0, 0); */
+    /* -ms-transform: scale(0, 0); */
+    /* -webkit-transform: scale(0, 0); */
+    /* transform: scale(0, 0); */
   }
     
 
