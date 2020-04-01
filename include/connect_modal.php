@@ -26,7 +26,7 @@
 						<input type="password" class="form-control" placeholder="password">
 					</div>
 					<div class="row align-items-center remember">
-						<input type="checkbox">Remember Me
+						<input type="checkbox"><span><p>Se souvenir de moi<p></span>
 					</div>
 					<div class="form-group">
 						<input type="submit" value="Login" class="btn btn-login bg-dark-trans float-right">

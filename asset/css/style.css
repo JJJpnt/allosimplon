@@ -92,7 +92,7 @@ header {
     font-size: 42px;
     color: #fff;
     line-height: 80px;
-    text-transform: uppercase;
+    text-transform: capitalize;
     font-weight: 100;
     /* transition: all 2s ease; */
     filter: drop-shadow(0px 3px 4px rgba(0,0,0,0.75));
@@ -151,10 +151,18 @@ body.sticky-header header h1 {
     backdrop-filter: blur(8px);
 }
 
+header .input-group {
+    margin-bottom: 1px !important;
+}
+
 
 .placeholder {
     height: 300vh;
     /* background-color: yellow; */
+}
+
+.nav-sides {
+    width: 245px !important;
 }
 
 
@@ -195,12 +203,16 @@ footer a:hover {
     background-color: rgba(0, 0, 0, 0.5) !important;
 }
 
+.modal-content {
+    border: 1px solid var(--color-danger);
+}
+
 .modal-header h3 {
     color: white;
 }
 
-.input-group-prepend span {
-    width: 50px;
+.input-group-prepend span, .input-group-append span  {
+    /* width: 50px; */
     background-color: var(--color-danger);
     color: black;
     border: 0 !important;
@@ -216,13 +228,13 @@ input:focus {
     color: white;
 }
 
-.remember input {
+/* .remember input {
     width: 20px;
     height: 20px;
     margin-left: 15px;
     margin-right: 5px;
     border-radius: 5px;
-}
+} */
 
 .btn-login {
     /* color: black; */
@@ -263,3 +275,46 @@ input:focus {
     border: 0 solid transparent !important;
 }
 
+/* JJJ's sexier checkboxes */
+
+.remember {
+    margin-left: 0;
+    line-height: 21px;
+}
+
+input[type='radio'], 
+input[type='checkbox'] {
+    
+    opacity: 0;
+    
+    float: left;
+    width: 25px;
+}
+
+
+input[type='radio'] + span,
+input[type='checkbox'] + span {
+    display: inline-block;
+    margin-left: -25px;
+    padding-left: 25px;
+    clear: none;
+    height: 20px;
+    
+    /* Left padding makes room for image */
+    /* padding: 5px 0 4px 24px; */
+    /* padding: 5px 0 4px 25px; */
+    
+    /* Make look clickable because they are */
+    /* background-color: transparent; */
+    background: url(../img/checkbox.svg) left center no-repeat; 
+    cursor: pointer;
+    
+}
+
+/* Checked images */
+input[type='radio']:checked + span {
+    background-image: url(../img/checkbox_checked.svg); /* TODO : Refaire un svg pour les radios */
+}
+input[type='checkbox']:checked + span {
+    background-image: url(../img/checkbox_checked.svg);
+}
