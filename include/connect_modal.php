@@ -11,25 +11,26 @@
         </button>
       </div>
       <div class="modal-body">
-				<form>
+				<form id="connect_form" action="include/user_connect.php" method="POST">
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
-						<input type="text" class="form-control" placeholder="username">
+						<input name="user_pseudo" id="user_pseudo" type="text" class="form-control" placeholder="Nom d'utilisateur">
 						
 					</div>
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-key"></i></span>
 						</div>
-						<input type="password" class="form-control" placeholder="password">
+						<input name="user_password" id="user_password" type="password" class="form-control" placeholder="Mot de passe">
 					</div>
 					<div class="row align-items-center remember">
 						<input type="checkbox"><span><p>Se souvenir de moi<p></span>
 					</div>
 					<div class="form-group">
-						<input type="submit" value="Login" class="btn btn-login bg-dark-trans float-right">
+            <!-- <input type="submit" value="Login" class="btn btn-login bg-dark-trans float-right"> -->
+            <a class="btn btn-login bg-dark-trans float-right" href="javascript:{}" onclick="document.getElementById('connect_form').submit();">Connexion</a>
 					</div>
 				</form>
 			</div>

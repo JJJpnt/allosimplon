@@ -1,5 +1,7 @@
 		<!-- LOAD JQUERY LIBRARY -->
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js"></script>
+		<!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js"></script> -->
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    
 		
 		<!-- LOADING FONTS AND ICONS -->
 		<link href="http://fonts.googleapis.com/css?family=Raleway%3A800%2C500%2C400" rel="stylesheet" property="stylesheet" type="text/css" media="all" />
@@ -20,7 +22,7 @@
         
         <!-- FONT AND STYLE FOR BASIC DOCUMENTS, NO NEED FOR FURTHER USAGE IN YOUR PROJECTS-->
         <link href="http://fonts.googleapis.com/css?family=Roboto%3A700%2C300" rel="stylesheet" property="stylesheet" type="text/css" media="all" />
-        <link rel="stylesheet" type="text/css" href="vendor/assets/css/noneed.css">
+        <!-- <link rel="stylesheet" type="text/css" href="vendor/assets/css/noneed.css"> -->
 
         <!-- REVOLUTION JS FILES -->
 		<script type="text/javascript" src="vendor/revolution/js/jquery.themepunch.tools.min.js"></script>

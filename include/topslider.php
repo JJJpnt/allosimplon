@@ -23,8 +23,8 @@
                         <!-- LAYER NR. 11 -->
                         <div class="tp-caption tp-shape tp-shapewrapper   tp-resizeme" id="slide-1598-layer-9"
                             data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-                            data-y="['middle','middle','middle','middle']" data-voffset="['15','15','15','15']"
-                            data-width="500" data-height="140" data-whitespace="nowrap" data-type="shape"
+                            data-y="['center','center','center','center']" data-voffset="['0','0','0','0']"
+                            data-width="100%" data-height="300" data-whitespace="nowrap" data-type="shape"
                             data-responsive_offset="on"
                             data-frames='[{"from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;","ease":"Power2.easeInOut"}]'
                             data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]"
@@ -35,7 +35,7 @@
                         <!-- LAYER NR. 12 -->
                         <div class="tp-caption NotGeneric-Title   tp-resizeme" id="slide-1598-layer-1"
                             data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-                            data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']"
+                            data-y="['center','center','center','center']" data-voffset="['-100','-100','-100','-115']"
                             data-fontsize="['70','70','70','45']" data-lineheight="['70','70','70','50']"
                             data-width="none" data-height="none" data-whitespace="nowrap" data-type="text"
                             data-responsive_offset="on"
@@ -43,18 +43,22 @@
                             data-textAlign="['left','left','left','left']" data-paddingtop="[10,10,10,10]"
                             data-paddingright="[0,0,0,0]" data-paddingbottom="[10,10,10,10]"
                             data-paddingleft="[0,0,0,0]" style="z-index: 16; white-space: nowrap;text-transform:left;">
-                            KEN BURNS </div>
+                            FILM MACHIN 
+                        </div>
 
                         <!-- LAYER NR. 13 -->
                         <div class="tp-caption NotGeneric-SubTitle   tp-resizeme" id="slide-1598-layer-4"
                             data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-                            data-y="['middle','middle','middle','middle']" data-voffset="['52','51','51','31']"
-                            data-width="none" data-height="none" data-whitespace="nowrap" data-type="text"
+                            data-y="['center','center','center','center']" data-voffset="['-15','15','15','20']"
+                            data-fontsize="['20','20','20','13']" data-lineheight="['20','20','20','16']"
+                            data-width="90%" data-height="none" data-whitespace="normal" data-type="text"
                             data-responsive_offset="on"
                             data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":1500,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'
                             data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]"
                             data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
-                            style="z-index: 17; white-space: nowrap;text-transform:left;">IN A SMOOTH WAY </div>
+                            style="z-index: 17; white-space: normal;text-transform:left;">
+                            The other thing with Lorem Ipsum is that you have to take out its family. He’s not a word hero. He’s a word hero because he was captured. I like text that wasn’t captured. Look at that text! Would anyone use that? Can you imagine that, the text of your next webpage?!
+                        </div>
                     </li>
                     <!-- SLIDE  -->
                     <li data-index="rs-1599" data-transition="zoomin" data-slotamount="7" data-hideafterloop="0"
@@ -73,8 +77,8 @@
                         <!-- LAYER NR. 11 -->
                         <div class="tp-caption tp-shape tp-shapewrapper   tp-resizeme" id="slide-1598-layer-9"
                             data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-                            data-y="['middle','middle','middle','middle']" data-voffset="['15','15','15','15']"
-                            data-width="500" data-height="140" data-whitespace="nowrap" data-type="shape"
+                            data-y="['center','center','center','center']" data-voffset="['0','0','0','0']"
+                            data-width="100%" data-height="300" data-whitespace="nowrap" data-type="shape"
                             data-responsive_offset="on"
                             data-frames='[{"from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;","ease":"Power2.easeInOut"}]'
                             data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]"
@@ -85,7 +89,7 @@
                         <!-- LAYER NR. 12 -->
                         <div class="tp-caption NotGeneric-Title   tp-resizeme" id="slide-1598-layer-1"
                             data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-                            data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']"
+                            data-y="['center','center','center','center']" data-voffset="['-100','-100','-100','-115']"
                             data-fontsize="['70','70','70','45']" data-lineheight="['70','70','70','50']"
                             data-width="none" data-height="none" data-whitespace="nowrap" data-type="text"
                             data-responsive_offset="on"
@@ -93,18 +97,22 @@
                             data-textAlign="['left','left','left','left']" data-paddingtop="[10,10,10,10]"
                             data-paddingright="[0,0,0,0]" data-paddingbottom="[10,10,10,10]"
                             data-paddingleft="[0,0,0,0]" style="z-index: 16; white-space: nowrap;text-transform:left;">
-                            KEN BURNS </div>
+                            FILM TRUC 
+                        </div>
 
                         <!-- LAYER NR. 13 -->
                         <div class="tp-caption NotGeneric-SubTitle   tp-resizeme" id="slide-1598-layer-4"
                             data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-                            data-y="['middle','middle','middle','middle']" data-voffset="['52','51','51','31']"
-                            data-width="none" data-height="none" data-whitespace="nowrap" data-type="text"
+                            data-y="['center','center','center','center']" data-voffset="['-15','15','15','20']"
+                            data-fontsize="['20','20','20','13']" data-lineheight="['20','20','20','16']"
+                            data-width="90%" data-height="none" data-whitespace="normal" data-type="text"
                             data-responsive_offset="on"
                             data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":1500,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'
                             data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]"
                             data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
-                            style="z-index: 17; white-space: nowrap;text-transform:left;">IN A SMOOTH WAY </div>
+                            style="z-index: 17; white-space: normal;text-transform:left;">
+                            The other thing with Lorem Ipsum is that you have to take out its family. He’s not a word hero. He’s a word hero because he was captured. I like text that wasn’t captured. Look at that text! Would anyone use that? Can you imagine that, the text of your next webpage?!
+                        </div>
                     </li>
                 </ul>
                 <div class="tp-bannertimer" style="height: 7px; background-color: rgba(255, 255, 255, 0.25);"></div>
@@ -123,7 +131,7 @@
                         jsFileLocation: "revolution/js/",
                         sliderLayout: "fullscreen",
                         dottedOverlay: "none",
-                        delay: 9000,
+                        delay: 39000,
                         navigation: {
                             keyboardNavigation: "off",
                             keyboard_direction: "horizontal",
@@ -173,7 +181,7 @@
                                 h_align: "center",
                                 v_align: "bottom",
                                 h_offset: 0,
-                                v_offset: 20
+                                v_offset: 10
                             }
                         },
                         carousel: {
@@ -192,10 +200,10 @@
                             presize: false
                         },
                         responsiveLevels: [1240, 1024, 778, 480],
-                        visibilityLevels: [2480, 1024, 778, 480],
+                        visibilityLevels: [1240, 1024, 778, 480],
 //                        gridwidth: [1240, 1024, 778, 480],
 //                        gridheight: [600, 600, 500, 400],
-                        gridwidth: [2480, 1024, 778, 480],
+                        gridwidth: [1240, 1024, 778, 480],
                         gridheight: [1600, 600, 500, 400],
                         lazyType: "none",
                         parallax: {
