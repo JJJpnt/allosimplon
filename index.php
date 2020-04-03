@@ -31,6 +31,10 @@
 <body>
     <?php include('include/nav.php'); ?>
     <?php include('include/topslider.php'); ?>
+    <?php include('include/film_modal.php'); ?>
+    
+    <?php include('include/film_slider.php'); ?>
+
     
     <div class="placeholder mt-5">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus suscipit, magna et condimentum viverra, sem arcu viverra elit, eget posuere tellus risus sit amet sem. Donec eleifend ullamcorper ultrices. Nunc feugiat, odio sit amet vestibulum laoreet, lorem ipsum lobortis dolor, id lobortis quam ligula eu risus. Etiam ullamcorper ultrices odio, feugiat cursus lacus. Proin porta urna neque, porta convallis lorem sagittis eget. Nunc tempor magna a dignissim tincidunt. In id massa nec mi egestas fringilla vitae eget magna. Sed posuere ultrices enim, ac egestas ipsum. Donec porta pulvinar nibh nec ullamcorper. Ut in dignissim nisi, hendrerit scelerisque augue.

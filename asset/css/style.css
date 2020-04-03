@@ -76,7 +76,7 @@ body {
 header {
     margin-top: 0;
     width: 100%;
-    height: 140px;
+    /* height: 140px; */
     text-align: center;
     position: fixed;
     top: 0;
@@ -98,7 +98,7 @@ header {
     filter: drop-shadow(0px 3px 4px rgba(0,0,0,0.75));
   }
   header nav {
-    position: absolute;
+    /* position: absolute; */
     bottom: 0;
     height: 60px;
     line-height: 60px;
@@ -108,6 +108,8 @@ header {
     /* line-height: 80px; */
     /* height: 1.5rem; */
     }
+
+
 
   header a, button, .btn {
     color: var(--color-light);
@@ -161,8 +163,12 @@ header .input-group {
     /* background-color: yellow; */
 }
 
-.nav-sides {
+.nav-search {
     width: 245px !important;
+}
+.nav-user {
+    width: 245px !important;
+    line-height: 1.2rem;
 }
 
 
@@ -275,6 +281,36 @@ input:focus {
     border: 0 solid transparent !important;
 }
 
+/* Film Modal */
+
+
+.modal-film h5 {
+    color: white;
+}
+
+.modal-film .modal-header {
+    background-size: cover;
+    background-position: center;
+    min-height: 300px;
+    max-height: 600px;
+    height: 45vh;
+}
+
+.modal-film .modal-dialog {
+    margin-left: 10vw;
+    margin-right: 10vw;
+    margin-top: 200px;
+    /* width: 800px; */
+}
+
+.modal-film .modal-content {
+    width: 80vw;
+}
+
+
+
+
+
 /* JJJ's sexier checkboxes */
 
 .remember {
@@ -317,4 +353,31 @@ input[type='radio']:checked + span {
 }
 input[type='checkbox']:checked + span {
     background-image: url(../img/checkbox_checked.svg);
+}
+
+
+
+/*
+.filters-expanded {
+    height: 0;
+    opacity : 0;
+}
+.filters {
+    height: auto !important;
+    opacity : 1 !important;
+    background-color: hsl(353, 90%, 65%);
+}
+*/
+
+
+
+
+/* Film Cards */
+
+
+.film-card {
+    width: 240px;
+    height: 360px;
+    background-color: transparent;
+    background-image: url('../img/posters/poster1.jpg');
 }

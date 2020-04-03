@@ -24,6 +24,8 @@ if($count>0) {
     session_start();
     $_SESSION['id_user'] = $results->id_user;
     $_SESSION['user_pseudo'] = $results->user_pseudo;
+    $_SESSION['user_firstname'] = $results->user_firstname;
+    $_SESSION['user_lastname'] = $results->user_lastname;
     echo "Session : user_pseudo : ".$_SESSION['user_pseudo'];
     echo "\n<br>Session : is_user : ".$_SESSION['id_user'];
     echo "\n\n<br><br>";

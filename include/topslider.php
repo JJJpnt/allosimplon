@@ -10,7 +10,7 @@
                     <li data-index="rs-1598" data-transition="zoomin" data-slotamount="7" data-hideafterloop="0"
                         data-hideslideonmobile="off" data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut"
                         data-masterspeed="2000" data-thumb="asset/img/posters/banner1.jpg" data-rotate="0"
-                        data-saveperformance="off" data-title="Ken Burns" data-param1="" data-param2="" data-param3=""
+                        data-saveperformance="off" data-title="Film Machin" data-param1="" data-param2="" data-param3=""
                         data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9=""
                         data-param10="" data-description="">
                         <!-- MAIN IMAGE -->
@@ -64,7 +64,7 @@
                     <li data-index="rs-1599" data-transition="zoomin" data-slotamount="7" data-hideafterloop="0"
                         data-hideslideonmobile="off" data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut"
                         data-masterspeed="2000" data-thumb="asset/img/posters/parasite-banner.jpg" data-rotate="0"
-                        data-saveperformance="off" data-title="Ken Burns" data-param1="" data-param2="" data-param3=""
+                        data-saveperformance="off" data-title="Film Truc" data-param1="" data-param2="" data-param3=""
                         data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9=""
                         data-param10="" data-description="">
                         <!-- MAIN IMAGE -->
