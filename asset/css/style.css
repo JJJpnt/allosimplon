@@ -65,6 +65,8 @@ body {
     font-size: 1rem;
     background-color: var(--color-dark);
 
+
+
     /* For nav */
     background-color: var(--color-dark);
     color: var(--color-light);
@@ -107,6 +109,11 @@ header {
     header div a {
     /* line-height: 80px; */
     /* height: 1.5rem; */
+    }
+
+
+    .first-content {
+        margin-top: 250px;
     }
 
 
@@ -164,10 +171,10 @@ header .input-group {
 }
 
 .nav-search {
-    width: 245px !important;
+    width: 345px !important;
 }
 .nav-user {
-    width: 245px !important;
+    width: 345px !important;
     line-height: 1.2rem;
 }
 
@@ -375,9 +382,74 @@ input[type='checkbox']:checked + span {
 /* Film Cards */
 
 
+.slick-container {
+    /* width:80%; */
+    margin: 0 auto;
+    height: calc(360+2rem);
+    overflow: hidden;
+}
+
 .film-card {
-    width: 240px;
-    height: 360px;
+    width: 240px !important;
+    height: 360px !important;
     background-color: transparent;
     background-image: url('../img/posters/poster1.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 0.5rem;
+    margin: 1rem 0.5rem;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0 3px;
+    text-align: center;
+}
+
+table img {
+    height: 100%;
+    width: auto;
+    max-height: 80px;
+    /* border-radius: 15px; */
+}
+
+table tr, table th {
+    /* border-radius: 15px; */
+    background-color: hsla(254, 10%, 25%, 0.5);
+}
+
+
+td:first-child, td:last-child {
+    background-color: hsl(254, 10%, 25%);
+}
+td:first-child {
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+td:last-child {
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+
+table tr td, table th {
+
+    /* background-color: hsla(var(--color-dark-hsl),0.9); */
+    padding: 10px 15px;
+}
+
+.td-poster {
+    /* box-sizing: border-box; */
+    padding: 0;
+    overflow: hidden;
+}
+
+td span {
+    background-color: hsl(254, 10%, 55%);
+    color: black;
+    border-radius: 4px;
+    margin: 2px;
+    padding: 1px 3px;
+    font-weight: bold;
+
 }

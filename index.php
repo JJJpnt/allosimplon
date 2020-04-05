@@ -22,6 +22,8 @@
     <!-- <link rel="stylesheet" type="text/css" href="vendorslick/slick.css"/> -->
     <!-- Add the new slick-theme.css if you want the default styling -->
     <!-- <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/> -->
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 
     <!-- Revolution Slider -->
     <?php include('include/topslider_headincludes.php'); ?>
@@ -29,10 +31,11 @@
 </head>
 
 <body>
+    <?php include('include/connect_db.php'); ?>
     <?php include('include/nav.php'); ?>
     <?php include('include/topslider.php'); ?>
     <?php include('include/film_modal.php'); ?>
-    
+
     <?php include('include/film_slider.php'); ?>
 
     

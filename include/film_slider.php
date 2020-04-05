@@ -10,14 +10,46 @@
 // </div>
 ?>
 
+<div class="slick-container">
+    <div class="slick-slider">
 
+        <div class="film-card d-flex align-items-end">
+            <div class=" bg-dark-trans p-1 w-100 text-left">
+                <h5 class="card-text">Film Titre</h5>
+                <p class="card-text">1h35 - USA</p>
+            </div>
+        </div>
 
-<div class="card film-card">
-  <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
-  <div class="card-body">
-      <p class="card-text">Film Titre</p>
-      <p class="card-text">1h35 - USA</p>
+    </div>
 </div>
-</div>
 
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<!-- <script type="text/javascript" src="slick\slick\slick.min.js"></script> -->
+    <script type="text/javascript">
 
+$('.slick-slider').slick({
+    centerMode: true,
+  centerPadding: '60px',
+  slidesToShow: 3,
+  responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        arrows: false,
+        centerMode: true,
+        centerPadding: '40px',
+        slidesToShow: 3
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        arrows: false,
+        centerMode: true,
+        centerPadding: '40px',
+        slidesToShow: 1
+      }
+    }
+  ]
+});
+</script>

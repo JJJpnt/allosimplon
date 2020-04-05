@@ -7,10 +7,12 @@ $(function(){
         // console.log(st);
         if((st <= 40)||(st < lastScrollTop)){
             // console.log("<40 or up");
-            $("body").removeClass("sticky-header");
+            // $("body").removeClass("sticky-header");
+            $("header").css("marginTop", 0 );
         }else{
             // console.log(">40 or down");
-            $("body").addClass("sticky-header");
+            $("header").css( "marginTop", ($("#header-top").height()*-1) );
+            // $("body").addClass("sticky-header");
         }
         if(st >= 250){
             $("header").addClass("nav-opaque");
@@ -54,10 +56,10 @@ $(function(){
 <?php include("connect_modal.php"); ?>
 
     <header>
-        <div class="d-flex align-items-center justify-content-between">
+        <div id="header-top" class="d-flex align-items-center justify-content-between">
             <div class="nav-search ml-3">
                 <div class="input-group input-group-sm form-group">
-                    <input type="password" class="form-control" placeholder="password">
+                    <input type="search" class="form-control" placeholder="Rechercher">
                     <div class="input-group-append">
                         <span class="input-group-text"><i class="fas fa-search"></i></span>
                     </div>
@@ -74,7 +76,7 @@ $(function(){
             <?php
                 // if( isset($_SESSION['id_user']) and isset($_SESSION['user_pseudo']) ) {
                 if( isset($_SESSION['user_pseudo']) ) {
-                    echo '<div class="nav-user mr-3 align-middle"><div>Connecté en tant que : '.$_SESSION['user_firstname'].'&nbsp;'.$_SESSION['user_lastname'].'<a class="text-right" href="include/user_logout.php">Se déconnecter&nbsp;&nbsp;<i class="fas fa-sign-out-alt" style="vertical-align: -0.065rem;"></i></a></div></div>';
+                    echo '<div class="nav-user mr-3 align-middle"><div>Connecté en tant que : '.$_SESSION['user_firstname'].'&nbsp;'.$_SESSION['user_lastname'].'<a class="text-right" href="userpanel.php">Mon compte</a><br><a class="text-right" href="include/user_logout.php">Se déconnecter&nbsp;&nbsp;<i class="fas fa-sign-out-alt" style="vertical-align: -0.065rem;"></i></a></div></div>';
                 }else{
                     echo '<div class="nav-user mr-3 align-middle"><a class="text-right" href="" data-toggle="modal" data-target="#connectModal">Se Connecter&nbsp;&nbsp;<i class="fas fa-sign-in-alt" style="vertical-align: -0.065rem;"></i></a></div>';
                 }

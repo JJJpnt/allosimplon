@@ -6,15 +6,33 @@
             <!-- START REVOLUTION SLIDER 5.4.1 fullwidth mode -->
             <div id="rev_slider_467_1" class="rev_slider fullscreenbanner" style="display:none;" data-version="5.4.1">
                 <ul>
+<?php
+    $sql = 'SELECT *
+            FROM films
+            INNER JOIN in_set
+            WHERE films.id_film = in_set.film_id AND in_set.id_set=1';
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+
+    while ($donnees = $stmt->fetch(PDO::FETCH_OBJ))
+    {                
+            echo '
                     <!-- SLIDE  -->
                     <li data-index="rs-1598" data-transition="zoomin" data-slotamount="7" data-hideafterloop="0"
                         data-hideslideonmobile="off" data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut"
                         data-masterspeed="2000" data-thumb="asset/img/posters/banner1.jpg" data-rotate="0"
-                        data-saveperformance="off" data-title="Film Machin" data-param1="" data-param2="" data-param3=""
+                        data-saveperformance="off" data-title="'.$donnees->film_titre.'" data-param1="" data-param2="" data-param3=""
                         data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9=""
                         data-param10="" data-description="">
                         <!-- MAIN IMAGE -->
-                        <img src="asset/img/posters/banner1.jpg" alt="" data-bgposition="center center"
+                        <img src="';
+                $sql_media = 'SELECT film_media_url FROM film_medias WHERE film_id = '.$donnees->id_film;
+                $stmt_media = $db->prepare($sql_media);
+                $stmt_media->execute();
+                $banner_url = $stmt_media->fetch(PDO::FETCH_OBJ);
+                echo $banner_url;
+            
+            echo '" alt="" data-bgposition="center center"
                             data-kenburns="on" data-duration="30000" data-ease="Linear.easeNone" data-scalestart="100"
                             data-scaleend="120" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 0"
                             data-offsetend="0 0" data-bgparallax="10" class="rev-slidebg" data-no-retina>
@@ -22,98 +40,47 @@
 
                         <!-- LAYER NR. 11 -->
                         <div class="tp-caption tp-shape tp-shapewrapper   tp-resizeme" id="slide-1598-layer-9"
-                            data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-                            data-y="['center','center','center','center']" data-voffset="['0','0','0','0']"
+                            data-x="[\'center\',\'center\',\'center\',\'center\']" data-hoffset="[\'0\',\'0\',\'0\',\'0\']"
+                            data-y="[\'center\',\'center\',\'center\',\'center\']" data-voffset="[\'0\',\'0\',\'0\',\'0\']"
                             data-width="100%" data-height="300" data-whitespace="nowrap" data-type="shape"
                             data-responsive_offset="on"
-                            data-frames='[{"from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;","ease":"Power2.easeInOut"}]'
-                            data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]"
+                            data-frames=\'[{"from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;","ease":"Power2.easeInOut"}]\'
+                            data-textAlign="[\'left\',\'left\',\'left\',\'left\']" data-paddingtop="[0,0,0,0]"
                             data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
                             style="z-index: 15;text-transform:left;background-color:rgba(0, 0, 0, 0.75);border-color:rgba(0, 0, 0, 0.50);border-width:0px;">
                         </div>
 
                         <!-- LAYER NR. 12 -->
                         <div class="tp-caption NotGeneric-Title   tp-resizeme" id="slide-1598-layer-1"
-                            data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-                            data-y="['center','center','center','center']" data-voffset="['-100','-100','-100','-115']"
-                            data-fontsize="['70','70','70','45']" data-lineheight="['70','70','70','50']"
+                            data-x="[\'center\',\'center\',\'center\',\'center\']" data-hoffset="[\'0\',\'0\',\'0\',\'0\']"
+                            data-y="[\'center\',\'center\',\'center\',\'center\']" data-voffset="[\'-100\',\'-100\',\'-100\',\'-115\']"
+                            data-fontsize="[\'70\',\'70\',\'70\',\'45\']" data-lineheight="[\'70\',\'70\',\'70\',\'50\']"
                             data-width="none" data-height="none" data-whitespace="nowrap" data-type="text"
                             data-responsive_offset="on"
-                            data-frames='[{"from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;","ease":"Power2.easeInOut"}]'
-                            data-textAlign="['left','left','left','left']" data-paddingtop="[10,10,10,10]"
+                            data-frames=\'[{"from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;","ease":"Power2.easeInOut"}]\'
+                            data-textAlign="[\'left\',\'left\',\'left\',\'left\']" data-paddingtop="[10,10,10,10]"
                             data-paddingright="[0,0,0,0]" data-paddingbottom="[10,10,10,10]"
                             data-paddingleft="[0,0,0,0]" style="z-index: 16; white-space: nowrap;text-transform:left;">
-                            FILM MACHIN 
+                            '.$donnees->film_titre.' 
                         </div>
 
                         <!-- LAYER NR. 13 -->
                         <div class="tp-caption NotGeneric-SubTitle   tp-resizeme" id="slide-1598-layer-4"
-                            data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-                            data-y="['center','center','center','center']" data-voffset="['-15','15','15','20']"
-                            data-fontsize="['20','20','20','13']" data-lineheight="['20','20','20','16']"
+                            data-x="[\'center\',\'center\',\'center\',\'center\']" data-hoffset="[\'0\',\'0\',\'0\',\'0\']"
+                            data-y="[\'center\',\'center\',\'center\',\'center\']" data-voffset="[\'-15\',\'15\',\'15\',\'20\']"
+                            data-fontsize="[\'20\',\'20\',\'20\',\'13\']" data-lineheight="[\'20\',\'20\',\'20\',\'16\']"
                             data-width="90%" data-height="none" data-whitespace="normal" data-type="text"
                             data-responsive_offset="on"
-                            data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":1500,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'
-                            data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]"
+                            data-frames=\'[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":1500,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]\'
+                            data-textAlign="[\'left\',\'left\',\'left\',\'left\']" data-paddingtop="[0,0,0,0]"
                             data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
                             style="z-index: 17; white-space: normal;text-transform:left;">
                             The other thing with Lorem Ipsum is that you have to take out its family. He’s not a word hero. He’s a word hero because he was captured. I like text that wasn’t captured. Look at that text! Would anyone use that? Can you imagine that, the text of your next webpage?!
                         </div>
                     </li>
-                    <!-- SLIDE  -->
-                    <li data-index="rs-1599" data-transition="zoomin" data-slotamount="7" data-hideafterloop="0"
-                        data-hideslideonmobile="off" data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut"
-                        data-masterspeed="2000" data-thumb="asset/img/posters/parasite-banner.jpg" data-rotate="0"
-                        data-saveperformance="off" data-title="Film Truc" data-param1="" data-param2="" data-param3=""
-                        data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9=""
-                        data-param10="" data-description="">
-                        <!-- MAIN IMAGE -->
-                        <img src="asset/img/posters/parasite-banner.jpg" alt="" data-bgposition="center center"
-                            data-kenburns="on" data-duration="30000" data-ease="Linear.easeNone" data-scalestart="100"
-                            data-scaleend="120" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 0"
-                            data-offsetend="0 0" data-bgparallax="10" class="rev-slidebg" data-no-retina>
-                        <!-- LAYERS -->
-
-                        <!-- LAYER NR. 11 -->
-                        <div class="tp-caption tp-shape tp-shapewrapper   tp-resizeme" id="slide-1598-layer-9"
-                            data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-                            data-y="['center','center','center','center']" data-voffset="['0','0','0','0']"
-                            data-width="100%" data-height="300" data-whitespace="nowrap" data-type="shape"
-                            data-responsive_offset="on"
-                            data-frames='[{"from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;","ease":"Power2.easeInOut"}]'
-                            data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]"
-                            data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
-                            style="z-index: 15;text-transform:left;background-color:rgba(0, 0, 0, 0.75);border-color:rgba(0, 0, 0, 0.50);border-width:0px;">
-                        </div>
-
-                        <!-- LAYER NR. 12 -->
-                        <div class="tp-caption NotGeneric-Title   tp-resizeme" id="slide-1598-layer-1"
-                            data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-                            data-y="['center','center','center','center']" data-voffset="['-100','-100','-100','-115']"
-                            data-fontsize="['70','70','70','45']" data-lineheight="['70','70','70','50']"
-                            data-width="none" data-height="none" data-whitespace="nowrap" data-type="text"
-                            data-responsive_offset="on"
-                            data-frames='[{"from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;","speed":1500,"to":"o:1;","delay":1000,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;","ease":"Power2.easeInOut"}]'
-                            data-textAlign="['left','left','left','left']" data-paddingtop="[10,10,10,10]"
-                            data-paddingright="[0,0,0,0]" data-paddingbottom="[10,10,10,10]"
-                            data-paddingleft="[0,0,0,0]" style="z-index: 16; white-space: nowrap;text-transform:left;">
-                            FILM TRUC 
-                        </div>
-
-                        <!-- LAYER NR. 13 -->
-                        <div class="tp-caption NotGeneric-SubTitle   tp-resizeme" id="slide-1598-layer-4"
-                            data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-                            data-y="['center','center','center','center']" data-voffset="['-15','15','15','20']"
-                            data-fontsize="['20','20','20','13']" data-lineheight="['20','20','20','16']"
-                            data-width="90%" data-height="none" data-whitespace="normal" data-type="text"
-                            data-responsive_offset="on"
-                            data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":1500,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'
-                            data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]"
-                            data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
-                            style="z-index: 17; white-space: normal;text-transform:left;">
-                            The other thing with Lorem Ipsum is that you have to take out its family. He’s not a word hero. He’s a word hero because he was captured. I like text that wasn’t captured. Look at that text! Would anyone use that? Can you imagine that, the text of your next webpage?!
-                        </div>
-                    </li>
+    ';
+    }
+?>
                 </ul>
                 <div class="tp-bannertimer" style="height: 7px; background-color: rgba(255, 255, 255, 0.25);"></div>
             </div>
