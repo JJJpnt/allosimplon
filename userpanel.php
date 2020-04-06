@@ -26,10 +26,11 @@
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 
     <!-- Revolution Slider -->
-    <?php include('include/topslider_headincludes.php'); ?>
-    
+    <?php //include('include/topslider_headincludes.php'); ?>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 </head>
 
+    
 <body>
 
 <?php include("include/connect_db.php"); ?>
@@ -52,49 +53,26 @@ function ellipsis($string, $limit, $repl)
 }
 
 ?>
+
+
     
 
-<div class="container-xl first-content">
+<?php
+$action = "userpanel.php";
+$editing = false;
 
+if(isset($_GET["edit_film"]) && !empty($_GET["id"]) && !isset($_POST['submit']))
+{
+    $editing = true;
+    $action="index.php?edit_film&id=".$_GET["id"];
 
+    include("include/user_film_edit.php");
 
-<table>
-    <tr>
-        <th>Id</th><th>Poster</th><th>Titre</th><th>Année</th><th>Durée</th><th>Synopsis</th><th></th>
-    </tr>
-    <?php
-    $sql = 'SELECT * FROM films';
-    $stmt = $db->prepare($sql);
-    $stmt->execute();
+}else{
+  include("include/user_film_list.php");
+}
 
-    while ($donnees = $stmt->fetch(PDO::FETCH_OBJ))
-    {
-    echo '
-        <tr>
-            <td>'.$donnees->id_film.'</td>
-            <td class="td-poster"><img src="'.$donnees->film_poster.'"></td>
-            <td><b>'.$donnees->film_title.'</b></td>
-            <td>'.$donnees->film_date.'</td>
-            <td>'.$donnees->film_length.'</td>
-            <td>'.ellipsis($donnees->film_synopsis, 250, "(...)").'</td>
-            <td>';
-            $stmt_genre =   $db->prepare("SELECT id_genre FROM is_genre WHERE id_film=$donnees->id_film");
-            $stmt_genre->execute();
-            while( $y = $stmt_genre->fetch(PDO::FETCH_OBJ) ) {
-                $stmt_genre_name=$db->prepare("SELECT genre_name FROM genres WHERE id_genre=".$y->id_genre);
-                $stmt_genre_name->execute();
-                while( $z=$stmt_genre_name->fetch(PDO::FETCH_OBJ) ) {
-                        echo "<span>$z->genre_name</span><br>";
-                }
-            }            
-
-    echo    '</td><td><a class="btn" href="index.php?edit&id='.$donnees->id_film.'">EDIT</a></td>
-        </tr>
-    ';
-    }
-    $stmt->closeCursor(); // Termine le traitement de la requête
-    ?>
-</table>
+?>
 
 
 
@@ -104,14 +82,6 @@ function ellipsis($string, $limit, $repl)
 
 
 
-
-
-
-
-
-
-
-</div>
     
     <?php include('include/footer.php'); ?>
 
@@ -124,7 +94,8 @@ function ellipsis($string, $limit, $repl)
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script> -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+
+    <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 

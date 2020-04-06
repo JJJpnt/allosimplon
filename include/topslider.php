@@ -10,36 +10,33 @@
     $sql = 'SELECT *
             FROM films
             INNER JOIN in_set
-            WHERE films.id_film = in_set.film_id AND in_set.id_set=1';
+            WHERE films.id_film = in_set.id_film AND in_set.id_set=1';
     $stmt = $db->prepare($sql);
     $stmt->execute();
-
-    while ($donnees = $stmt->fetch(PDO::FETCH_OBJ))
+    // echo '<script>alert("'.$stmt->rowCount().'")</script>';
+    while ($data = $stmt->fetch(PDO::FETCH_OBJ))
     {                
+            $stmt_media = $db->prepare('SELECT film_media_url FROM film_medias WHERE id_film = '.$data->id_film);
+            $stmt_media->execute();
+            $banner_url = $stmt_media->fetch(PDO::FETCH_OBJ);
+            // echo "<!--".$banner_url->film_media_url."-->";
             echo '
                     <!-- SLIDE  -->
-                    <li data-index="rs-1598" data-transition="zoomin" data-slotamount="7" data-hideafterloop="0"
+                    <li data-index="rs-161'.$data->id_film.'" data-transition="zoomin" data-slotamount="7" data-hideafterloop="0"
                         data-hideslideonmobile="off" data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut"
-                        data-masterspeed="2000" data-thumb="asset/img/posters/banner1.jpg" data-rotate="0"
-                        data-saveperformance="off" data-title="'.$donnees->film_titre.'" data-param1="" data-param2="" data-param3=""
+                        data-masterspeed="2000" data-thumb="'.$banner_url->film_media_url.'" data-rotate="0"
+                        data-saveperformance="off" data-title="'.$data->film_title.'" data-param1="" data-param2="" data-param3=""
                         data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9=""
                         data-param10="" data-description="">
                         <!-- MAIN IMAGE -->
-                        <img src="';
-                $sql_media = 'SELECT film_media_url FROM film_medias WHERE film_id = '.$donnees->id_film;
-                $stmt_media = $db->prepare($sql_media);
-                $stmt_media->execute();
-                $banner_url = $stmt_media->fetch(PDO::FETCH_OBJ);
-                echo $banner_url;
-            
-            echo '" alt="" data-bgposition="center center"
+                        <img src="'.$banner_url->film_media_url.'" alt="" data-bgposition="center center"
                             data-kenburns="on" data-duration="30000" data-ease="Linear.easeNone" data-scalestart="100"
                             data-scaleend="120" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 0"
                             data-offsetend="0 0" data-bgparallax="10" class="rev-slidebg" data-no-retina>
                         <!-- LAYERS -->
 
                         <!-- LAYER NR. 11 -->
-                        <div class="tp-caption tp-shape tp-shapewrapper   tp-resizeme" id="slide-1598-layer-9"
+                        <div class="tp-caption tp-shape tp-shapewrapper   tp-resizeme" id="rs-161'.$data->id_film.'-layer-9"
                             data-x="[\'center\',\'center\',\'center\',\'center\']" data-hoffset="[\'0\',\'0\',\'0\',\'0\']"
                             data-y="[\'center\',\'center\',\'center\',\'center\']" data-voffset="[\'0\',\'0\',\'0\',\'0\']"
                             data-width="100%" data-height="300" data-whitespace="nowrap" data-type="shape"
@@ -51,7 +48,7 @@
                         </div>
 
                         <!-- LAYER NR. 12 -->
-                        <div class="tp-caption NotGeneric-Title   tp-resizeme" id="slide-1598-layer-1"
+                        <div class="tp-caption NotGeneric-Title   tp-resizeme" id="rs-161'.$data->id_film.'-layer-1"
                             data-x="[\'center\',\'center\',\'center\',\'center\']" data-hoffset="[\'0\',\'0\',\'0\',\'0\']"
                             data-y="[\'center\',\'center\',\'center\',\'center\']" data-voffset="[\'-100\',\'-100\',\'-100\',\'-115\']"
                             data-fontsize="[\'70\',\'70\',\'70\',\'45\']" data-lineheight="[\'70\',\'70\',\'70\',\'50\']"
@@ -61,13 +58,13 @@
                             data-textAlign="[\'left\',\'left\',\'left\',\'left\']" data-paddingtop="[10,10,10,10]"
                             data-paddingright="[0,0,0,0]" data-paddingbottom="[10,10,10,10]"
                             data-paddingleft="[0,0,0,0]" style="z-index: 16; white-space: nowrap;text-transform:left;">
-                            '.$donnees->film_titre.' 
+                            '.$data->film_title.' 
                         </div>
 
                         <!-- LAYER NR. 13 -->
-                        <div class="tp-caption NotGeneric-SubTitle   tp-resizeme" id="slide-1598-layer-4"
+                        <div class="tp-caption NotGeneric-SubTitle   tp-resizeme" id="rs-161'.$data->id_film.'-layer-4"
                             data-x="[\'center\',\'center\',\'center\',\'center\']" data-hoffset="[\'0\',\'0\',\'0\',\'0\']"
-                            data-y="[\'center\',\'center\',\'center\',\'center\']" data-voffset="[\'-15\',\'15\',\'15\',\'20\']"
+                            data-y="[\'center\',\'center\',\'center\',\'center\']" data-voffset="[\'0\',\'0\',\'0\',\'10\']"
                             data-fontsize="[\'20\',\'20\',\'20\',\'13\']" data-lineheight="[\'20\',\'20\',\'20\',\'16\']"
                             data-width="90%" data-height="none" data-whitespace="normal" data-type="text"
                             data-responsive_offset="on"
@@ -75,7 +72,7 @@
                             data-textAlign="[\'left\',\'left\',\'left\',\'left\']" data-paddingtop="[0,0,0,0]"
                             data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
                             style="z-index: 17; white-space: normal;text-transform:left;">
-                            The other thing with Lorem Ipsum is that you have to take out its family. He’s not a word hero. He’s a word hero because he was captured. I like text that wasn’t captured. Look at that text! Would anyone use that? Can you imagine that, the text of your next webpage?!
+                            '.$data->film_synopsis.'
                         </div>
                     </li>
     ';

@@ -166,7 +166,7 @@ header .input-group {
 
 
 .placeholder {
-    height: 300vh;
+    /* height: 300vh; */
     /* background-color: yellow; */
 }
 
@@ -413,13 +413,13 @@ table img {
     /* border-radius: 15px; */
 }
 
-table tr, table th {
+table td {
     /* border-radius: 15px; */
     background-color: hsla(254, 10%, 25%, 0.5);
 }
 
 
-td:first-child, td:last-child {
+td:first-child, td:last-child, table th {
     background-color: hsl(254, 10%, 25%);
 }
 td:first-child {
@@ -429,6 +429,14 @@ td:first-child {
 td:last-child {
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
+}
+.th-left {
+    border-top-left-radius: 15px;
+    /* border-bottom-left-radius: 15px; */
+}
+.th-right {
+    border-top-right-radius: 15px;
+    /* border-bottom-right-radius: 15px; */
 }
 
 
@@ -444,7 +452,9 @@ table tr td, table th {
     overflow: hidden;
 }
 
-td span {
+
+
+td span, .filter-list span {
     background-color: hsl(254, 10%, 55%);
     color: black;
     border-radius: 4px;
@@ -453,3 +463,4 @@ td span {
     font-weight: bold;
 
 }
+

@@ -11,23 +11,35 @@
 ?>
 
 <div class="slick-container">
-    <div class="slick-slider">
+    <div class="slick-slider<?php echo $slider_set ?>">
 
-        <div class="film-card d-flex align-items-end">
+    <?php
+
+    for($i=0;$i<15;$i++)
+    {
+    echo '<div class="film-card d-flex align-items-end">
             <div class=" bg-dark-trans p-1 w-100 text-left">
                 <h5 class="card-text">Film Titre</h5>
                 <p class="card-text">1h35 - USA</p>
             </div>
-        </div>
+        </div>';
+    }
+    
+    ?>
 
     </div>
 </div>
 
-<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<?php
+if(!isset($slick_loaded)){
+echo '<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>';
+$slick_loaded=true;
+}
+?>
 <!-- <script type="text/javascript" src="slick\slick\slick.min.js"></script> -->
     <script type="text/javascript">
 
-$('.slick-slider').slick({
+$('.slick-slider<?php echo $slider_set ?>').slick({
     centerMode: true,
   centerPadding: '60px',
   slidesToShow: 3,

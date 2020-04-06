@@ -28,6 +28,9 @@
     <!-- Revolution Slider -->
     <?php include('include/topslider_headincludes.php'); ?>
     
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -36,6 +39,15 @@
     <?php include('include/topslider.php'); ?>
     <?php include('include/film_modal.php'); ?>
 
+    <!-- <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script> -->
+    <?php $slider_set = 1 ?>
+    <h2 class="my-5 ml-3 mx-auto">A l'affiche :</h2>
+    <?php include('include/film_slider.php'); ?>
+    <?php $slider_set = 2 ?>
+    <h2 class="my-5 ml-3 mx-auto">Science-fiction :</h2>
+    <?php include('include/film_slider.php'); ?>
+    <?php $slider_set = 3 ?>
+    <h2 class="my-5 ml-3 mx-auto">Aventure :</h2>
     <?php include('include/film_slider.php'); ?>
 
     
