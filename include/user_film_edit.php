@@ -2,22 +2,40 @@
 
 <script type="text/javascript">
 
-$(function(){
+class Genre {
 
-    // $.getJSON('include/get_genres.php', , function(data) {
-    // $.getJSON('include/get_genres.php', { get_param: 'value' }, function(data) {
-        // $.each(data, function(index, element) {
-        //     $('.filter-list').append($('<span>', {
-        //         text: element.name
-        //     }));
-        alert("blah");
-        $.getJSON('include/get_genre.php', function (data) {
-            console.log(data);
-     });
-        // });
-// });
+  constructor(id, name, active=false) {
+    this.id = id;
+    this.name = name;
+    this.is_on = active;
+    var repr = $("<span class='genre'></span>").text(this.name);
+    $(repr).addClass(this.active?'on':'off');
+  }
+
+  activate() { this.active=true; }
+  deactivate() { this.active=false; }
+  toggle() { this.active=!this.active; }
+
 
 }
+
+$(function () {
+
+  $.getJSON('include/get_genres.php', function (data) {
+    // console.log('données:' + JSON.stringify(data));
+    // console.log('row 1 :' + JSON.stringify(data[1]));
+    var genres = [];
+    data.forEach((one_genre, idx) => {
+      genres.push(new Genre(one_genre['id'],one_genre['name']));
+      console.log("Passe "+idx+" :");
+      console.log(genres[idx]);
+    });
+  });
+
+
+
+});
+
 
 </script>
 

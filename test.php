@@ -4,21 +4,14 @@
 
 $(function(){
 
-    // $.getJSON('include/get_genres.php', , function(data) {
-    // $.getJSON('include/get_genres.php', { get_param: 'value' }, function(data) {
-        // $.each(data, function(index, element) {
-        //     $('.filter-list').append($('<span>', {
-        //         text: element.name
-        //     }));
-        
-        $.getJSON('include/get_genre.php', function (data) 
+        $.getJSON('include/get_genres.php', function (data) 
         {
-            console.log('données:'+data);
+            console.log('données:'+JSON.stringify(data));
+            console.log('row 1 :'+JSON.stringify(data[1]));
         }
         );
-        // });
-// });
-
 });
+
+
 
 </script>
