@@ -2,14 +2,22 @@
 
 <script type="text/javascript">
 
+$(document).ready(function() {
+
 class Genre {
+
+  
 
   constructor(id, name, active=false) {
     this.id = id;
     this.name = name;
-    this.is_on = active;
-    var repr = $("<span class='genre'></span>").text(this.name);
-    $(repr).addClass(this.active?'on':'off');
+    this.active = active;
+    this.repr = $("<span></span>").text(this.name);
+    // this.repr = $("<span></span>").text("blah");
+    $(this.repr).addClass("genre");
+    $(this.repr).addClass(this.active?'on':'off');
+    this.btn = $("<a><i class='fas fa-times'></i></a>");
+    $(this.repr).append(this.btn);
   }
 
   activate() { this.active=true; }
@@ -19,16 +27,17 @@ class Genre {
 
 }
 
-$(function () {
-
-  $.getJSON('include/get_genres.php', function (data) {
+  $.getJSON('include/get_genres.php', function(data) {
     // console.log('données:' + JSON.stringify(data));
-    // console.log('row 1 :' + JSON.stringify(data[1]));
+    console.log('row 1 :' + JSON.stringify(data[1]));
     var genres = [];
     data.forEach((one_genre, idx) => {
-      genres.push(new Genre(one_genre['id'],one_genre['name']));
+      genres.push(new Genre(one_genre['id_genre'],one_genre['genre_name']));
       console.log("Passe "+idx+" :");
-      console.log(genres[idx]);
+      // console.log(genres[idx]);
+      // console.log(genres[idx].repr);
+      console.log($(genres[idx].repr).text());
+      $('#genresContainer').append(genres[idx].repr);
     });
   });
 
@@ -87,6 +96,7 @@ $(function () {
     <input type="time" class="form-control" id="filmTime" aria-describedby="timeHelp">
     <!-- <small id="titleHelp" class="form-text text-muted">We'll never share your title with anyone else.</small> -->
   </div>
+  <div id="genresContainer"></div>
   <button type="submit" class="btn">Submit</button>
 </form>
 
