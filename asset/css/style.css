@@ -464,3 +464,23 @@ td span, .filter-list span {
 
 }
 
+
+/* Genre spans */
+
+.genre {
+    display: inline-block;
+    padding: 4px;
+    margin: 3px 2px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bolder;
+    /* background-color: darkred; */
+}
+
+.genre.on {
+    background-color: darkgreen;
+}
+
+.genre.off {
+    background-color: darkred;
+}

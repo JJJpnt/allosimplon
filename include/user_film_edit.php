@@ -2,30 +2,56 @@
 
 <script type="text/javascript">
 
+var Genre = class {
+
+constructor(id, name, active=false) {
+  var _this = this;
+
+  this.id = id;
+  this.name = name;
+  this.active = active;
+  this.repr = $("<span></span>").text(this.name);
+  // this.repr = $("<span></span>").text("blah");
+  $(this.repr).addClass("genre");
+  this.btn = $("<a>&nbsp;<i class='fas fa-times'></i>&nbsp;</a>");
+  $(this.repr).append(this.btn);
+  // this.toggle();
+  $(this.btn).on("click", $.proxy(this.toggle, this));
+  this.active?this.activate():this.deactivate();
+
+  return this;
+}
+
+activate() { 
+  this.active=true; 
+  $(this.repr).removeClass("off");
+  $(this.repr).addClass("on");
+  $(this.repr).children().children("i").removeClass("fa-plus");
+  $(this.repr).children().children("i").addClass("fa-times");
+  // alert(this.name+" activé !");
+  return true;
+}
+deactivate() { 
+  this.active=false; 
+  $(this.repr).removeClass("on");
+  $(this.repr).addClass("off");
+  $(this.repr).children().children("i").removeClass("fa-times");
+  $(this.repr).children().children("i").addClass("fa-plus");
+  // alert(this.name+" désactivé !");
+  return true;
+}
+toggle() { 
+  // _this=e.data.this;
+  // alert(this.name);
+  // this.active =! this.active;
+  this.active ? this.deactivate() : this.activate();
+  return true;
+}
+}
+
 $(document).ready(function() {
 
-class Genre {
 
-  
-
-  constructor(id, name, active=false) {
-    this.id = id;
-    this.name = name;
-    this.active = active;
-    this.repr = $("<span></span>").text(this.name);
-    // this.repr = $("<span></span>").text("blah");
-    $(this.repr).addClass("genre");
-    $(this.repr).addClass(this.active?'on':'off');
-    this.btn = $("<a><i class='fas fa-times'></i></a>");
-    $(this.repr).append(this.btn);
-  }
-
-  activate() { this.active=true; }
-  deactivate() { this.active=false; }
-  toggle() { this.active=!this.active; }
-
-
-}
 
   $.getJSON('include/get_genres.php', function(data) {
     // console.log('données:' + JSON.stringify(data));
@@ -40,6 +66,8 @@ class Genre {
       $('#genresContainer').append(genres[idx].repr);
     });
   });
+
+
 
 
 
