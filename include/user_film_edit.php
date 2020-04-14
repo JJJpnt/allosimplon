@@ -4,40 +4,62 @@
 
 var Genre = class {
 
-constructor(id, name, active=false) {
+constructor(id, name, active=false, target=-1) {
   var _this = this;
 
   this.id = id;
   this.name = name;
   this.active = active;
+  this.target = target;
+  // alert("target="+target);
   this.repr = $("<span></span>").text(this.name);
-  // this.repr = $("<span></span>").text("blah");
   $(this.repr).addClass("genre");
   this.btn = $("<a>&nbsp;<i class='fas fa-times'></i>&nbsp;</a>");
   $(this.repr).append(this.btn);
   // this.toggle();
   $(this.btn).on("click", $.proxy(this.toggle, this));
-  this.active?this.activate():this.deactivate();
+  this.active?this.activate(false):this.deactivate(false);
+  
+  // alert("include/update_film_genres.php?action=add&id_film="+target+"&id_genre="+id);
 
   return this;
 }
 
-activate() { 
+activate(proceed=true) { 
   this.active=true; 
   $(this.repr).removeClass("off");
   $(this.repr).addClass("on");
   $(this.repr).children().children("i").removeClass("fa-plus");
   $(this.repr).children().children("i").addClass("fa-times");
+
   // alert(this.name+" activé !");
+  if(proceed){
+    alert("include/update_film_genres.php?action=add&id_film="+this.target+"&id_genre="+this.id);
+    $.proxy($.get, this, "include/update_film_genres.php?action=add&id_film="+this.target+"&id_genre="+this.id, function(data, status){
+      // alert("include/update_film_genres.php?action=add&id_film="+this.target+"&id_genre="+this.id);
+      alert("Data: " + data + "\nStatus: " + status);
+    });
+  } else {
+    // alert("pas proceed");
+  }
   return true;
 }
-deactivate() { 
+deactivate(proceed=true) { 
   this.active=false; 
   $(this.repr).removeClass("on");
   $(this.repr).addClass("off");
   $(this.repr).children().children("i").removeClass("fa-times");
   $(this.repr).children().children("i").addClass("fa-plus");
   // alert(this.name+" désactivé !");
+  if(proceed){
+    // alert("include/update_film_genres.php?action=del&id_film="+this.target+"&id_genre="+this.id);
+    $.proxy($.get, this, "include/update_film_genres.php?action=del&id_film="+this.target+"&id_genre="+this.id, function(data, status){
+      // alert("include/update_film_genres.php?action=del&id_film="+this.target+"&id_genre="+this.id);
+      alert("Data: " + data + "\nStatus: " + status);
+    });
+  } else {
+    // alert("pas proceed");
+  }
   return true;
 }
 toggle() { 
@@ -47,7 +69,13 @@ toggle() {
   this.active ? this.deactivate() : this.activate();
   return true;
 }
+
+
+
 }
+
+
+
 
 $(document).ready(function() {
 
@@ -58,7 +86,7 @@ $(document).ready(function() {
     console.log('row 1 :' + JSON.stringify(data[1]));
     var genres = [];
     data.forEach((one_genre, idx) => {
-      genres.push(new Genre(one_genre['id_genre'],one_genre['genre_name']));
+      genres.push(new Genre(one_genre['id_genre'],one_genre['genre_name'],false,<?php echo $_GET["id"]; ?>));
       console.log("Passe "+idx+" :");
       // console.log(genres[idx]);
       // console.log(genres[idx].repr);
@@ -78,11 +106,16 @@ $(document).ready(function() {
 
 
 
-
 <div class="container-xl first-content">
 
+<div class="row">
+
+<div class="col-3"><img width=240 height=360 src="asset/img/posters/no-image.jpg"></div>
 
 <?php
+
+    $action = "include/film_update.php?id=".$_GET["id"];
+
     $sql = 'SELECT * FROM films WHERE id_film='.$_GET["id"];
     $stmt = $db->prepare($sql);
     $stmt->execute();
@@ -110,36 +143,34 @@ $(document).ready(function() {
     // echo    '</td><td><a class="btn" href="index.php?edit&id='.$donnees->id_film.'">EDIT</a></td>
     //     </tr>
     // ';
-    $stmt->closeCursor(); // Termine le traitement de la requête
+    // $stmt->closeCursor(); // Termine le traitement de la requête
     ?>
 
-<form>
-<div class="form-group">
-    <label for="filmTitle">Titre du film</label>
-    <input type="text" class="form-control" id="filmTitle" aria-describedby="titleHelp" placeholder="Enter title">
-    <!-- <small id="titleHelp" class="form-text text-muted">We'll never share your title with anyone else.</small> -->
-  </div>
-  <div class="form-group">
-    <label for="filTime">Titre du film</label>
-    <input type="time" class="form-control" id="filmTime" aria-describedby="timeHelp">
-    <!-- <small id="titleHelp" class="form-text text-muted">We'll never share your title with anyone else.</small> -->
-  </div>
-  <div id="genresContainer"></div>
-  <button type="submit" class="btn">Submit</button>
-</form>
+  <form class="col-8" action="<?php echo $action?>" method="POST">
 
-<p class="filter_list">
+    <div class="form-group">
+      <label for="filmTitle">Titre du film</label>
+      <input type="text" class="form-control" name="film_title" id="film_title" aria-describedby="titleHelp" placeholder="Enter title" value="<?php echo $donnees->film_title ?>">
+      <!-- <small id="titleHelp" class="form-text text-muted">We'll never share your title with anyone else.</small> -->
+    </div>
+    <div class="form-group">
+      <label for="filmTime">Durée du film</label>
+      <input type="time" class="form-control" name="film_length" id="film_length" aria-describedby="timeHelp" value="<?php echo $donnees->film_length ?>">
+      <!-- <small id="titleHelp" class="form-text text-muted">We'll never share your title with anyone else.</small> -->
+    </div>
+    <div class="form-group">
+      <label for="filmSynopsis">Synopsis</label>
+      <textarea id="film_synopsis" name="film_synopsis" rows="10" cols="150"><?php echo $donnees->film_synopsis ?></textarea>
+      <!-- <small id="titleHelp" class="form-text text-muted">We'll never share your title with anyone else.</small> -->
+    </div>
+    <div id="genresContainer"></div>
+    <p class="filter_list"></p>
+    <a class="text-right mt-1 btn" href="" data-toggle="modal" data-target="#uploadModal">Uploader une affiche&nbsp;&nbsp;<i class="fas fa-sign-in-alt" style="vertical-align: -0.065rem;"></i></a>
+    <button type="submit" class="btn float-right ">Submit</button>
 
-</p>
+  </form>
 
-
-
-
-
-
-<a class="text-right" href="" data-toggle="modal" data-target="#uploadModal">Uploader une affiche&nbsp;&nbsp;<i class="fas fa-sign-in-alt" style="vertical-align: -0.065rem;"></i></a>
-
-<div class="row"></div>
+</div>
 
 
 
