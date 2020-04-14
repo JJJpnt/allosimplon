@@ -12,7 +12,7 @@ include('connect_db.php');
 
 
 
-if( isset($_GET["action"]) && isset($_GET["id_genre"]) && isset($_GET["id_film"]) ) {
+if( isset($_POST["action"]) && isset($_POST["id_genre"]) && isset($_POST["id_film"]) ) {
 
     
     
@@ -20,14 +20,14 @@ if( isset($_GET["action"]) && isset($_GET["id_genre"]) && isset($_GET["id_film"]
     // $salle_capa = trim($_POST['salle_capa']);
     // $salle_numero = trim($_POST['salle_numero']);
     
-    $sql = $db->prepare ("DELETE FROM is_genre WHERE id_genre = ".$_GET["id_genre"]." AND id_film = ".$_GET["id_genre"]);
+    $sql = $db->prepare ("DELETE FROM is_genre WHERE id_genre = ".$_POST["id_genre"]." AND id_film = ".$_POST["id_genre"]);
     $sql->execute();
     
 
 
         // $sql = $dbh->prepare ("UPDATE salle 
         //                         SET numero_salle=:numero_salle, capacite_salle=:capacite_salle
-        //                         WHERE id_salle=".$_GET["id"]);
+        //                         WHERE id_salle=".$_POST["id"]);
 
         //                 $sql->execute(array(
         //                     'numero_salle' => $salle_numero,
@@ -35,18 +35,18 @@ if( isset($_GET["action"]) && isset($_GET["id_genre"]) && isset($_GET["id_film"]
         //                 ));
         //                 $sql-> closeCursor();
 
-        if($_GET["action"]=="add") {
+        if($_POST["action"]=="add") {
             $sql = $db->prepare ("INSERT INTO is_genre (id_genre,id_film) VALUES (:id_genre,:id_film)");
     
             $sql->execute(array(
-                    'id_genre' => $_GET["id_genre"],
-                    'id_film' => $_GET["id_film"]
+                    'id_genre' => $_POST["id_genre"],
+                    'id_film' => $_POST["id_film"]
             ));
         }                        
 
         // $sql = $dbh->prepare ("UPDATE salle 
         //                         SET numero_salle=:numero_salle, capacite_salle=:capacite_salle
-        //                         WHERE id_salle=".$_GET["id"]);
+        //                         WHERE id_salle=".$_POST["id"]);
 
         //                 $sql->execute(array(
         //                     'numero_salle' => $salle_numero,
@@ -57,7 +57,7 @@ if( isset($_GET["action"]) && isset($_GET["id_genre"]) && isset($_GET["id_film"]
         //     $sql = $dbh->prepare ("INSERT INTO avoir (id_salle,id_equipement) VALUES (:id_salle,:id_equipement)");
 
         //     $sql->execute(array(
-        //             'id_salle' => $_GET["id"],
+        //             'id_salle' => $_POST["id"],
         //             'id_equipement' => $selected
         //     ));
         // }

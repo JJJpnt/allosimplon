@@ -34,10 +34,17 @@ activate(proceed=true) {
 
   // alert(this.name+" activé !");
   if(proceed){
-    alert("include/update_film_genres.php?action=add&id_film="+this.target+"&id_genre="+this.id);
-    $.proxy($.get, this, "include/update_film_genres.php?action=add&id_film="+this.target+"&id_genre="+this.id, function(data, status){
-      // alert("include/update_film_genres.php?action=add&id_film="+this.target+"&id_genre="+this.id);
-      alert("Data: " + data + "\nStatus: " + status);
+    //  alert("include/update_film_genres.php?action=add&id_film="+this.target+"&id_genre="+this.id);
+    // $.proxy(jQuery.post, this, "update_film_genres.php",
+    jQuery.post("include/update_film_genres.php",
+        {
+          action: "add",
+          id_film: this.target,
+          id_genre: this.id
+        }, 
+        function(data, status){
+          // alert("include/update_film_genres.php?action=add&id_film="+this.target+"&id_genre="+this.id);
+          alert("Data: " + data + "\nStatus: " + status);
     });
   } else {
     // alert("pas proceed");
@@ -52,10 +59,15 @@ deactivate(proceed=true) {
   $(this.repr).children().children("i").addClass("fa-plus");
   // alert(this.name+" désactivé !");
   if(proceed){
-    // alert("include/update_film_genres.php?action=del&id_film="+this.target+"&id_genre="+this.id);
-    $.proxy($.get, this, "include/update_film_genres.php?action=del&id_film="+this.target+"&id_genre="+this.id, function(data, status){
-      // alert("include/update_film_genres.php?action=del&id_film="+this.target+"&id_genre="+this.id);
-      alert("Data: " + data + "\nStatus: " + status);
+    jQuery.post("include/update_film_genres.php",
+        {
+          action: "del",
+          id_film: this.target,
+          id_genre: this.id
+        }, 
+        function(data, status){
+          // alert("include/update_film_genres.php?action=add&id_film="+this.target+"&id_genre="+this.id);
+          alert("Data: " + data + "\nStatus: " + status);
     });
   } else {
     // alert("pas proceed");
@@ -79,7 +91,7 @@ toggle() {
 
 $(document).ready(function() {
 
-
+  var thisFilm = <?php echo $_GET["id"]; ?>;
 
   $.getJSON('include/get_genres.php', function(data) {
     // console.log('données:' + JSON.stringify(data));

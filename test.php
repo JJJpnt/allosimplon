@@ -4,10 +4,11 @@
 
 $(function(){
 
-        $.getJSON('include/get_genres.php', function (data) 
+        $.post('include/film_is_genre.php', {id_film: 1, id_genre: 1}, function (data) 
         {
+            alert("blah");
             console.log('données:'+JSON.stringify(data));
-            console.log('row 1 :'+JSON.stringify(data[1]));
+            // console.log('row 1 :'+JSON.stringify(data[1]));
         }
         );
 });
