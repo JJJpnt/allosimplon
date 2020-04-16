@@ -20,7 +20,7 @@ if( isset($_POST["action"]) && isset($_POST["id_genre"]) && isset($_POST["id_fil
     // $salle_capa = trim($_POST['salle_capa']);
     // $salle_numero = trim($_POST['salle_numero']);
     
-    $sql = $db->prepare ("DELETE FROM is_genre WHERE id_genre = ".$_POST["id_genre"]." AND id_film = ".$_POST["id_genre"]);
+    $sql = $db->prepare ("DELETE FROM is_genre WHERE id_genre = ".$_POST["id_genre"]." AND id_film = ".$_POST["id_film"]);
     $sql->execute();
     
 

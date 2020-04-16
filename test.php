@@ -2,15 +2,26 @@
 
 <script type="text/javascript">
 
+
+
+
 $(function(){
 
-        $.post('include/film_is_genre.php', {id_film: 1, id_genre: 1}, function (data) 
+    function film_is_genre(idFilm, idGenre) {
+
+        var dat = $.post('include/film_is_genre.php', {id_film: idFilm, id_genre: idGenre}, function (data) 
         {
-            alert("blah");
-            console.log('données:'+JSON.stringify(data));
+            // alert('données:'+JSON.stringify(data));
+            // console.log('données:'+JSON.stringify(data));
             // console.log('row 1 :'+JSON.stringify(data[1]));
         }
         );
+        return dat;
+    }
+    
+    var dat = film_is_genre(1,1);
+    alert(dat);
+
 });
 
 

@@ -3,22 +3,23 @@
 include('connect_db.php');
 
 $id_film = !empty($_POST['id_film']) ? $_POST['id_film'] : NULL;
-$id_genre = !empty($_POST['user_password']) ? $_POST['user_password'] : NULL;
+$id_genre = !empty($_POST['id_genre']) ? $_POST['id_genre'] : NULL;
 
-$stmt = $db->prepare('SELECT * FROM is_genre WHERE id_film=:id_film AND id_genre=:id_genre');
+$stmt = $db->prepare('SELECT COUNT(*) as total FROM is_genre WHERE id_film=:id_film AND id_genre=:id_genre');
 $stmt->execute(array(
     'id_genre' => $id_genre,
     'id_film' => $id_film
 ));
-
+$results = $stmt->fetch(PDO::FETCH_OBJ);
 // Méthode sans fetch !!!
-$count = $stmt->rowCount(); // Compter les rows retournés.
+// $count = $stmt->rowCount(); // Compter les rows retournés.
+$count = $results->total; // Compter les rows retournés.
 
 // echo json_encode($count);
 if($count>0) {
-    echo json_encode("true");
+    echo json_encode(true);
 } else {
-    echo json_encode("false");
+    echo json_encode(false);
 }
 
 // echo "rowCount : $count\n<br>";

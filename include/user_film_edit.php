@@ -11,18 +11,60 @@ constructor(id, name, active=false, target=-1) {
   this.name = name;
   this.active = active;
   this.target = target;
-  // alert("target="+target);
+
   this.repr = $("<span></span>").text(this.name);
   $(this.repr).addClass("genre");
+
   this.btn = $("<a>&nbsp;<i class='fas fa-times'></i>&nbsp;</a>");
   $(this.repr).append(this.btn);
-  // this.toggle();
+
+  if(target>0) this.test_genre(this.target, this.id);
+
   $(this.btn).on("click", $.proxy(this.toggle, this));
-  this.active?this.activate(false):this.deactivate(false);
-  
-  // alert("include/update_film_genres.php?action=add&id_film="+target+"&id_genre="+id);
 
   return this;
+}
+      
+
+test_genre(id_film, id_genre) {
+
+  var result;
+  console.log("film:"+id_film+" genre:"+id_genre);
+  $.ajax({
+    type: 'POST',
+    url: 'include/film_is_genre.php',
+    data: {id_film: id_film, id_genre: id_genre},
+    success: function(data) {
+      result=data;
+    },
+    async:false
+    // dataType: dataType,
+  });
+
+  console.log('données:' + result);
+  if(result=="true"){
+    this.activate(false);
+  } else {
+    this.deactivate(false);
+  }
+  // alert(data);
+  // console.log('row 1 :' + JSON.stringify(data));
+  // test_genre
+  // var genres = [];
+  // data.forEach((one_genre, idx) => {
+
+    // genres.push(new Genre(one_genre['id_genre'],one_genre['genre_name'],false,php echo $_GET["id"]; ));
+    // console.log("Passe "+idx+" :");
+    // console.log(genres[idx]);
+    // console.log(genres[idx].repr);
+    // console.log($(genres[idx].repr).text());
+    // $('#genresContainer').append(genres[idx].repr);
+    // });
+  // });
+  // console.log('données:' + JSON.stringify(result));
+  // console.log('données:' + JSON.stringify(data));
+    // alert(JSON.stringify(data));
+  // data?this.activate(false):this.deactivate(false);
 }
 
 activate(proceed=true) { 
@@ -44,7 +86,7 @@ activate(proceed=true) {
         }, 
         function(data, status){
           // alert("include/update_film_genres.php?action=add&id_film="+this.target+"&id_genre="+this.id);
-          alert("Data: " + data + "\nStatus: " + status);
+          // alert("Data: " + data + "\nStatus: " + status);
     });
   } else {
     // alert("pas proceed");
@@ -67,7 +109,7 @@ deactivate(proceed=true) {
         }, 
         function(data, status){
           // alert("include/update_film_genres.php?action=add&id_film="+this.target+"&id_genre="+this.id);
-          alert("Data: " + data + "\nStatus: " + status);
+          // alert("Data: " + data + "\nStatus: " + status);
     });
   } else {
     // alert("pas proceed");
@@ -95,14 +137,14 @@ $(document).ready(function() {
 
   $.getJSON('include/get_genres.php', function(data) {
     // console.log('données:' + JSON.stringify(data));
-    console.log('row 1 :' + JSON.stringify(data[1]));
+    //console.log('row 1 :' + JSON.stringify(data[1]));
     var genres = [];
     data.forEach((one_genre, idx) => {
       genres.push(new Genre(one_genre['id_genre'],one_genre['genre_name'],false,<?php echo $_GET["id"]; ?>));
-      console.log("Passe "+idx+" :");
+      //console.log("Passe "+idx+" :");
       // console.log(genres[idx]);
       // console.log(genres[idx].repr);
-      console.log($(genres[idx].repr).text());
+      //console.log($(genres[idx].repr).text());
       $('#genresContainer').append(genres[idx].repr);
     });
   });
