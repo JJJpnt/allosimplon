@@ -1,130 +1,106 @@
 
+<?php
+empty($_GET["id"] ? $new_film = true : $new_film = false;
+?>
 
 <script type="text/javascript">
 
 var Genre = class {
 
-constructor(id, name, active=false, target=-1) {
-  var _this = this;
+  constructor(id, name, active=false, target=-1) {
+    var _this = this;
 
-  this.id = id;
-  this.name = name;
-  this.active = active;
-  this.target = target;
+    this.id = id;
+    this.name = name;
+    this.active = active;
+    this.target = target;
 
-  this.repr = $("<span></span>").text(this.name);
-  $(this.repr).addClass("genre");
+    this.repr = $("<span></span>").text(this.name);
+    $(this.repr).addClass("genre");
 
-  this.btn = $("<a>&nbsp;<i class='fas fa-times'></i>&nbsp;</a>");
-  $(this.repr).append(this.btn);
+    this.btn = $("<a>&nbsp;<i class='fas fa-times'></i>&nbsp;</a>");
+    $(this.repr).append(this.btn);
 
-  if(target>0) this.test_genre(this.target, this.id);
+    if(target>0) this.test_genre(this.target, this.id);
 
-  $(this.btn).on("click", $.proxy(this.toggle, this));
+    $(this.btn).on("click", $.proxy(this.toggle, this));
 
-  return this;
-}
-      
-
-test_genre(id_film, id_genre) {
-
-  var result;
-  console.log("film:"+id_film+" genre:"+id_genre);
-  $.ajax({
-    type: 'POST',
-    url: 'include/film_is_genre.php',
-    data: {id_film: id_film, id_genre: id_genre},
-    success: function(data) {
-      result=data;
-    },
-    async:false
-    // dataType: dataType,
-  });
-
-  console.log('données:' + result);
-  if(result=="true"){
-    this.activate(false);
-  } else {
-    this.deactivate(false);
+    return this;
   }
-  // alert(data);
-  // console.log('row 1 :' + JSON.stringify(data));
-  // test_genre
-  // var genres = [];
-  // data.forEach((one_genre, idx) => {
+        
 
-    // genres.push(new Genre(one_genre['id_genre'],one_genre['genre_name'],false,php echo $_GET["id"]; ));
-    // console.log("Passe "+idx+" :");
-    // console.log(genres[idx]);
-    // console.log(genres[idx].repr);
-    // console.log($(genres[idx].repr).text());
-    // $('#genresContainer').append(genres[idx].repr);
-    // });
-  // });
-  // console.log('données:' + JSON.stringify(result));
-  // console.log('données:' + JSON.stringify(data));
-    // alert(JSON.stringify(data));
-  // data?this.activate(false):this.deactivate(false);
-}
+  test_genre(id_film, id_genre) {
 
-activate(proceed=true) { 
-  this.active=true; 
-  $(this.repr).removeClass("off");
-  $(this.repr).addClass("on");
-  $(this.repr).children().children("i").removeClass("fa-plus");
-  $(this.repr).children().children("i").addClass("fa-times");
-
-  // alert(this.name+" activé !");
-  if(proceed){
-    //  alert("include/update_film_genres.php?action=add&id_film="+this.target+"&id_genre="+this.id);
-    // $.proxy(jQuery.post, this, "update_film_genres.php",
-    jQuery.post("include/update_film_genres.php",
-        {
-          action: "add",
-          id_film: this.target,
-          id_genre: this.id
-        }, 
-        function(data, status){
-          // alert("include/update_film_genres.php?action=add&id_film="+this.target+"&id_genre="+this.id);
-          // alert("Data: " + data + "\nStatus: " + status);
+    var result;
+    console.log("film:"+id_film+" genre:"+id_genre);
+    $.ajax({
+      type: 'POST',
+      url: 'include/film_is_genre.php',
+      data: {id_film: id_film, id_genre: id_genre},
+      success: function(data) {
+        result=data;
+      },
+      async:false
+      // dataType: dataType,
     });
-  } else {
-    // alert("pas proceed");
-  }
-  return true;
-}
-deactivate(proceed=true) { 
-  this.active=false; 
-  $(this.repr).removeClass("on");
-  $(this.repr).addClass("off");
-  $(this.repr).children().children("i").removeClass("fa-times");
-  $(this.repr).children().children("i").addClass("fa-plus");
-  // alert(this.name+" désactivé !");
-  if(proceed){
-    jQuery.post("include/update_film_genres.php",
-        {
-          action: "del",
-          id_film: this.target,
-          id_genre: this.id
-        }, 
-        function(data, status){
-          // alert("include/update_film_genres.php?action=add&id_film="+this.target+"&id_genre="+this.id);
-          // alert("Data: " + data + "\nStatus: " + status);
-    });
-  } else {
-    // alert("pas proceed");
-  }
-  return true;
-}
-toggle() { 
-  // _this=e.data.this;
-  // alert(this.name);
-  // this.active =! this.active;
-  this.active ? this.deactivate() : this.activate();
-  return true;
-}
 
+    console.log('données:' + result);
+    if(result=="true"){
+      this.activate(false);
+    } else {
+      this.deactivate(false);
+    }
+  }
 
+  activate(proceed=true) { 
+    this.active=true; 
+    $(this.repr).removeClass("off");
+    $(this.repr).addClass("on");
+    $(this.repr).children().children("i").removeClass("fa-plus");
+    $(this.repr).children().children("i").addClass("fa-times");
+
+    if(proceed){
+      jQuery.post("include/update_film_genres.php",
+          {
+            action: "add",
+            id_film: this.target,
+            id_genre: this.id
+          }, 
+          function(data, status){
+            // alert("include/update_film_genres.php?action=add&id_film="+this.target+"&id_genre="+this.id);
+            // alert("Data: " + data + "\nStatus: " + status);
+      });
+    } else {
+      // alert("pas proceed");
+    }
+    return true;
+  }
+
+  deactivate(proceed=true) { 
+    this.active=false; 
+    $(this.repr).removeClass("on");
+    $(this.repr).addClass("off");
+    $(this.repr).children().children("i").removeClass("fa-times");
+    $(this.repr).children().children("i").addClass("fa-plus");
+    if(proceed){
+      jQuery.post("include/update_film_genres.php",
+          {
+            action: "del",
+            id_film: this.target,
+            id_genre: this.id
+          }, 
+          function(data, status){
+      });
+    } else {
+      // alert("pas proceed");
+    }
+    return true;
+  }
+
+  toggle() { 
+    this.active ? this.deactivate() : this.activate();
+    return true;
+  }
 
 }
 
@@ -136,22 +112,12 @@ $(document).ready(function() {
   var thisFilm = <?php echo $_GET["id"]; ?>;
 
   $.getJSON('include/get_genres.php', function(data) {
-    // console.log('données:' + JSON.stringify(data));
-    //console.log('row 1 :' + JSON.stringify(data[1]));
     var genres = [];
     data.forEach((one_genre, idx) => {
       genres.push(new Genre(one_genre['id_genre'],one_genre['genre_name'],false,<?php echo $_GET["id"]; ?>));
-      //console.log("Passe "+idx+" :");
-      // console.log(genres[idx]);
-      // console.log(genres[idx].repr);
-      //console.log($(genres[idx].repr).text());
       $('#genresContainer').append(genres[idx].repr);
     });
   });
-
-
-
-
 
 });
 

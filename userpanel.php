@@ -65,7 +65,7 @@ function ellipsis($string, $limit, $repl)
 $action = "userpanel.php";
 $editing = false;
 
-if(isset($_GET["edit_film"]) && !empty($_GET["id"]) && !isset($_POST['submit']))
+if(isset($_GET["edit_film"]) && !isset($_POST['submit']))
 {
     $editing = true;
     $action="index.php?edit_film&id=".$_GET["id"];
