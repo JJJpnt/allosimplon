@@ -1,6 +1,10 @@
 <?php
 
-include('connect_db.php');
+// include('connect_db.php');
+require_once('classes/database.php')
+
+$db_conn = new Database('localhost', 'allosimplon', 'root', '');
+$db = $db_conn->PDOConnexion();
 
 $user_pseudo = !empty($_POST['user_pseudo']) ? $_POST['user_pseudo'] : NULL;
 $user_password = !empty($_POST['user_password']) ? $_POST['user_password'] : NULL;
