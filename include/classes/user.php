@@ -1,7 +1,6 @@
 <?php
 
-<?php
-class Utilisateur
+class User
  
 {
     private $_db;
@@ -60,12 +59,11 @@ class Utilisateur
         return $this->_user_level;
     }
 
-
-    private function connect($login, $pass) {
-        $stmt = $_db->prepare('SELECT * FROM users WHERE user_pseudo=:user_pseudo AND user_password=:user_password');
+    public function connect($login, $pass, $session=true) {
+        $stmt = $this->_db->prepare('SELECT * FROM users WHERE user_pseudo=:user_pseudo AND user_password=:user_password');
         $stmt->execute(array(
-            'user_pseudo' => $user_pseudo,
-            'user_password' => $user_password
+            'user_pseudo' => $login,
+            'user_password' => $pass
         ));
 
         // Méthode sans fetch !!!
@@ -84,15 +82,14 @@ class Utilisateur
             $_user_avatar = $results->user_avatar;
             $_user_level = $results->user_level;
             // echo "Session : user_pseudo : ".$_SESSION['user_pseudo'];
-            session_start();
-            $_SESSION['id_user'] = $results->id_user;
-            $_SESSION['user_pseudo'] = $results->user_pseudo;
-            $_SESSION['user_firstname'] = $results->user_firstname;
-            $_SESSION['user_lastname'] = $results->user_lastname;
-            // echo "Session : user_pseudo : ".$_SESSION['user_pseudo'];
-            // echo "\n<br>Session : is_user : ".$_SESSION['id_user'];
-            // echo "\n\n<br><br>";
-            // header('location:/index.php');
+            if($session) {
+                session_destroy();
+                session_start();
+                $_SESSION['id_user'] = $results->id_user;
+                $_SESSION['user_pseudo'] = $results->user_pseudo;
+                $_SESSION['user_firstname'] = $results->user_firstname;
+                $_SESSION['user_lastname'] = $results->user_lastname;
+            }
             // header('Location: ' . $_SERVER['HTTP_REFERER']);
             return true;
         }else{
@@ -100,129 +97,170 @@ class Utilisateur
             return false;
         }
     }
- 
- 
- 
- 
- 
- 
-    /**
 
-    * Mise à jour des attributs récupérés dans la base de données
+    public function create($login, $pass, $mail) {
+        $stmt = $this->_db->prepare('SELECT * FROM users WHERE user_pseudo=:user_pseudo AND user_password=:user_password');
+        $stmt->execute(array(
+            'user_pseudo' => $login,
+            'user_password' => $pass
+        ));
 
-    *
-
-    * @return bool FALSE ou TRUE
-
-    */
- 
-    private function updateAttributes()
- 
-    {
- 
-        $result=mysql_query("SELECT * FROM tUtilisateurs WHERE idClient='$idClient'");
- 
-        if (mysql_num_rows($result)) {
- 
-            $donnees=mysql_fetch_array($result);
- 
-            $this->pseudo = $donnees['pseudo'];
- 
-            $this->mdp = $donnees['mdp'];
- 
-            $this->prenom = $donnees['prenom'];
- 
-            $this->nom= $donnees['nom'];
- 
-            $this->adresse = $donnees['adresse'];
- 
-            $this->codePostal = $donnees['codePostal'];
- 
-            $this->ville = $donnees['ville'];
- 
-            $this->pays = $donnees['pays'];
- 
-            $this->age = $donnees['age'];
- 
-            $this->dateReg = $donnees['dateReg'];
- 
-            $this->level = $donnees['level'];
- 
-            $this->ip = $donnees['ip'];
- 
-            $this->dateVisite = $donnees['dateVisite'];
- 
+        // Méthode sans fetch !!!
+        $count = $stmt->rowCount(); // Compter les rows retournés.
+        // echo "rowCount : $count\n<br>";
+        if($count>0) {
+            $results = $stmt->fetch(PDO::FETCH_OBJ);
+            // echo 'Login SUCCESS';
+            session_start();
+            $_id_user = $results->id_user;
+            $_user_pseudo = $results->user_pseudo;
+            $_user_firstname = $results->user_firstname;
+            $_user_lastname = $results->user_lastname;
+            $_user_password = $results->user_password;
+            $_user_mail = $results->user_mail;
+            $_user_avatar = $results->user_avatar;
+            $_user_level = $results->user_level;
+            // echo "Session : user_pseudo : ".$_SESSION['user_pseudo'];
+            if($session) {
+                session_destroy();
+                session_start();
+                $_SESSION['id_user'] = $results->id_user;
+                $_SESSION['user_pseudo'] = $results->user_pseudo;
+                $_SESSION['user_firstname'] = $results->user_firstname;
+                $_SESSION['user_lastname'] = $results->user_lastname;
+            }
+            // header('Location: ' . $_SERVER['HTTP_REFERER']);
             return true;
- 
-        } else {
- 
-            $this->erreur = "imposible de mettre à jour les attributs : l'id n'existe pas";
- 
+        }else{
+            // echo 'Login FAIL';
             return false;
- 
         }
- 
     }
- 
- 
- 
- 
- 
- 
- 
-    /**
 
-    * Ajoute dans la base de données le nouvel utilisateur
 
-    *
+ 
+ 
+ 
+ 
+ 
+ 
+    // /**
 
-    * @return bool FALSE ou TRUE
+    // * Mise à jour des attributs récupérés dans la base de données
 
-    */
- 
-    public function create()
- 
-    {
- 
-        //on supprime les membre non activé de plus de 24 heures
- 
-        $temps = time() - (60 * 60 * 24);
- 
-        mysql_query("DELETE FROM tUtilisateurs WHERE dateReg < '$temps' AND level='0'");
- 
- 
- 
-        // On enregistre le membre
- 
-        if ($this->erreur == NULL) {
- 
-            $this->dateReg = time();
- 
-           // $this-> = time();
- 
-            $this->ip = realip();
- 
-            mysql_query("INSERT INTO tUtilisateurs (pseudo, mdp, prenom,nom, adresse, codePostal,
+    // *
 
-                         villle, pays, age, dateReg, level, ip, dateVisite)
+    // * @return bool FALSE ou TRUE
 
-                         VALUES('$this->pseudo', '$this->mdp', '$this->prenom', 
+    // */
+ 
+    // private function updateAttributes()
+ 
+    // {
+ 
+    //     $result=mysql_query("SELECT * FROM tUtilisateurs WHERE idClient='$idClient'");
+ 
+    //     if (mysql_num_rows($result)) {
+ 
+    //         $donnees=mysql_fetch_array($result);
+ 
+    //         $this->pseudo = $donnees['pseudo'];
+ 
+    //         $this->mdp = $donnees['mdp'];
+ 
+    //         $this->prenom = $donnees['prenom'];
+ 
+    //         $this->nom= $donnees['nom'];
+ 
+    //         $this->adresse = $donnees['adresse'];
+ 
+    //         $this->codePostal = $donnees['codePostal'];
+ 
+    //         $this->ville = $donnees['ville'];
+ 
+    //         $this->pays = $donnees['pays'];
+ 
+    //         $this->age = $donnees['age'];
+ 
+    //         $this->dateReg = $donnees['dateReg'];
+ 
+    //         $this->level = $donnees['level'];
+ 
+    //         $this->ip = $donnees['ip'];
+ 
+    //         $this->dateVisite = $donnees['dateVisite'];
+ 
+    //         return true;
+ 
+    //     } else {
+ 
+    //         $this->erreur = "imposible de mettre à jour les attributs : l'id n'existe pas";
+ 
+    //         return false;
+ 
+    //     }
+ 
+    // }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+    // /**
 
-                        '$this->nom' '$this->adresse', '$this->codePostal', '$this->ville', 
+    // * Ajoute dans la base de données le nouvel utilisateur
 
-                        '$this->pays', '$this->age', '$this->dateReg', '$this->level', 
+    // *
 
-                        '$this->ip', '$this->dateVisite')");
+    // * @return bool FALSE ou TRUE
+
+    // */
  
-            return true;
+    // public function create()
  
-        } else {
+    // {
  
-            return false;
+    //     //on supprime les membre non activé de plus de 24 heures
  
-        }
+    //     $temps = time() - (60 * 60 * 24);
  
-    }
+    //     mysql_query("DELETE FROM tUtilisateurs WHERE dateReg < '$temps' AND level='0'");
+ 
+ 
+ 
+    //     // On enregistre le membre
+ 
+    //     if ($this->erreur == NULL) {
+ 
+    //         $this->dateReg = time();
+ 
+    //        // $this-> = time();
+ 
+    //         $this->ip = realip();
+ 
+    //         mysql_query("INSERT INTO tUtilisateurs (pseudo, mdp, prenom,nom, adresse, codePostal,
+
+    //                      villle, pays, age, dateReg, level, ip, dateVisite)
+
+    //                      VALUES('$this->pseudo', '$this->mdp', '$this->prenom', 
+
+    //                     '$this->nom' '$this->adresse', '$this->codePostal', '$this->ville', 
+
+    //                     '$this->pays', '$this->age', '$this->dateReg', '$this->level', 
+
+    //                     '$this->ip', '$this->dateVisite')");
+ 
+    //         return true;
+ 
+    //     } else {
+ 
+    //         return false;
+ 
+    //     }
+ 
+    // }
 }
 
   ?>

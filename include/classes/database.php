@@ -7,12 +7,18 @@ class database {
       protected $_username;
       protected $_password;
 
+      protected $_db;
+
+    public function getDb() {
+        return $this->_db;
+    }
       // Créer l'object à partir du constructeur
       public function __construct($_host, $_dbname, $_username, $_password) {
           $this->_host = $_host;
           $this->_dbname = $_dbname;
           $this->_username = $_username;
           $this->_password = $_password;
+          $this->_db = $this->PDOConnexion();
       }
 
       // Fonction permettant de se connecter
