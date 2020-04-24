@@ -54,6 +54,7 @@ $(function(){
 <?php include("consts.php"); ?>
 
 <?php include("connect_modal.php"); ?>
+<?php include("register_modal.php"); ?>
 
     <header>
         <div id="header-top" class="d-flex align-items-center justify-content-between">
